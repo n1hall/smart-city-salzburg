@@ -55,15 +55,19 @@ An interactive web application that displays various smart city services across 
 ### Running the Project
 
 1. Clone or download this repository
-2. Install dependencies:
+2. Enter project directory:
+   ```bash
+   cd smart-city-salzburg/
+   ```
+3. Install dependencies:
    ```bash
    npm install -g serve
    ```
-3. Start the development server:
+4. Start the development server:
    ```bash
    serve .
    ```
-4. Open your web browser and navigate to `http://localhost:3000`
+5. Open your web browser and navigate to `http://localhost:3000`
 
 ### Using the Application
 
