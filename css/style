@@ -1,0 +1,162 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 0.5rem 0 0;
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+
+#map-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 140px);
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+#controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    max-width: 220px;
+}
+
+.control-box {
+    margin-bottom: 15px;
+}
+
+.control-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.control-box label {
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.bike-legend, .ev-legend, 
+.recycling-legend, .wifi-legend {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.bike-legend {
+    background: #27ae60;
+}
+
+.ev-legend {
+    background: #e67e22;
+}
+
+.recycling-legend {
+    background: #3498db;
+}
+
+.wifi-legend {
+    background: #9b59b6;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Popup Styles */
+.leaflet-popup-content {
+    font-family: 'Roboto', sans-serif;
+    min-width: 220px;
+    margin: 12px;
+}
+
+.leaflet-popup-content h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bike-popup {
+    border-left: 4px solid #27ae60;
+    padding-left: 10px;
+}
+
+.ev-popup {
+    border-left: 4px solid #e67e22;
+    padding-left: 10px;
+}
+
+.recycling-popup {
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+}
+
+.wifi-popup {
+    border-left: 4px solid #9b59b6;
+    padding-left: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    #controls {
+        max-width: 180px;
+        padding: 12px;
+    }
+}

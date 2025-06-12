@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart City Services | Salzburg</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <h1>Salzburg Smart City Services</h1>
+        <p>Explore urban services across the city</p>
+    </header>
+
+    <div id="map-container">
+        <div id="map"></div>
+        <div id="controls">
+            <select id="search-type">
+                <option value="all">All Types</option>
+                <option value="Bicycle Rental">Bicycle Rental</option>
+                <option value="Charging Station">EV Charger</option>
+                <option value="Recycling Point">Recycling</option>
+                <option value="Public WiFi">Public WiFi</option>
+            </select>
+            <input type="text" id="search-box" placeholder="Search smart places..." autocomplete="off">
+            <div id="search-results"></div>
+            <div class="control-box">
+                <h3>Map Layers</h3>
+                <div id="layer-toggles">
+                    <button class="layer-toggle active" data-layer="bike" title="Bicycle Rentals">
+                        <i class="fa-solid fa-bicycle"></i>
+                        <span class="layer-label">Bicycle Rentals</span>
+                    </button>
+                    <button class="layer-toggle active" data-layer="ev" title="EV Chargers">
+                        <i class="fa-solid fa-charging-station"></i>
+                        <span class="layer-label">EV Chargers</span>
+                    </button>
+                    <button class="layer-toggle active" data-layer="recycling" title="Recycling Points">
+                        <i class="fa-solid fa-recycle"></i>
+                        <span class="layer-label">Recycling</span>
+                    </button>
+                    <button class="layer-toggle active" data-layer="wifi" title="Public WiFi">
+                        <i class="fa-solid fa-wifi"></i>
+                        <span class="layer-label">Public WiFi</span>
+                    </button>
+                </div>
+            </div>
+            <div class="control-box">
+                <h3>Legend</h3>
+                <div class="legend-item"><i class="fa-solid fa-bicycle legend-icon"></i> Bicycle Rental</div>
+                <div class="legend-item"><i class="fa-solid fa-charging-station legend-icon"></i> EV Charger</div>
+                <div class="legend-item"><i class="fa-solid fa-recycle legend-icon"></i> Recycling</div>
+                <div class="legend-item"><i class="fa-solid fa-wifi legend-icon"></i> Public WiFi</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
