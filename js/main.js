@@ -11,10 +11,10 @@ const map = L.map('map', {
     maxZoom: 18
 });
 
-// Add OpenStreetMap tile layer
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors',
-    maxZoom: 19
+// Add Breton OpenStreetMap tile layer
+var OpenStreetMap_CAT = L.tileLayer('https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles courtesy of <a href="https://www.openstreetmap.cat" target="_blank">Breton OpenStreetMap Team</a>'
 }).addTo(map);
 
 // Add zoom control (already present by default, but ensure it's visible)
@@ -22,6 +22,25 @@ map.zoomControl.setPosition('bottomright');
 
 // Sidebar popup toggle (show/hide controls)
 const controls = document.getElementById('controls');
+
+// Initialize marker cluster group
+const markerClusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 50,
+    spiderfyOnMaxZoom: true,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    iconCreateFunction: function(cluster) {
+        const count = cluster.getChildCount();
+        return L.divIcon({
+            html: `<div class="cluster-icon"><span>${count}</span></div>`,
+            className: 'marker-cluster',
+            iconSize: L.point(40, 40)
+        });
+    }
+});
+
+// Add cluster group to map
+map.addLayer(markerClusterGroup);
 
 // Loading indicator function
 function showLoading() {
@@ -103,7 +122,7 @@ async function loadBikeLayer() {
             }
         });
         layers.set('bike', bikeLayer);
-        bikeLayer.addTo(map);
+        markerClusterGroup.addLayer(bikeLayer);
         return bikeLayer;
     } catch (error) {
         handleError(error, 'bicycle rentals');
@@ -134,7 +153,7 @@ async function loadEvLayer() {
             }
         });
         layers.set('ev', evLayer);
-        evLayer.addTo(map);
+        markerClusterGroup.addLayer(evLayer);
         return evLayer;
     } catch (error) {
         handleError(error, 'charging stations');
@@ -165,7 +184,7 @@ async function loadRecyclingLayer() {
             }
         });
         layers.set('recycling', recyclingLayer);
-        recyclingLayer.addTo(map);
+        markerClusterGroup.addLayer(recyclingLayer);
         return recyclingLayer;
     } catch (error) {
         handleError(error, 'recycling points');
@@ -196,7 +215,7 @@ async function loadWifiLayer() {
             }
         });
         layers.set('wifi', wifiLayer);
-        wifiLayer.addTo(map);
+        markerClusterGroup.addLayer(wifiLayer);
         return wifiLayer;
     } catch (error) {
         handleError(error, 'WiFi points');
